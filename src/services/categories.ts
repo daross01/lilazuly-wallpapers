@@ -8,7 +8,12 @@ export async function getCategories(): Promise<Category[]> {
     .order("position");
 
   console.log("DATA:", data);
-  console.log("ERROR:", error);
+  if (error) {
+    console.log("MESSAGE:", error.message);
+    console.log("DETAILS:", error.details);
+    console.log("HINT:", error.hint);
+    console.log("CODE:", error.code);
+    }
 
   if (error) throw error;
 
