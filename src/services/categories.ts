@@ -7,7 +7,10 @@ export async function getCategories(): Promise<Category[]> {
     .select("*")
     .order("position");
 
+  console.log("DATA:", data);
+  console.log("ERROR:", error);
+
   if (error) throw error;
 
-  return data;
+  return data ?? [];
 }
