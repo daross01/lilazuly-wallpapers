@@ -1,0 +1,41 @@
+:root {
+
+  /* ===== Colores ===== */
+
+  --background: #FCFBFA;
+  --surface: #FFFFFF;
+
+  --primary: #A78BFA;
+  --primary-hover: #8B5CF6;
+
+  --text: #2F2F33;
+  --text-light: #6F6F78;
+
+  --border: #E8E5EC;
+
+  --beige: #F5EFE7;
+
+  /* ===== Tipografías ===== */
+
+  --font-logo: "Cormorant Garamond", serif;
+  --font-body: "Poppins", sans-serif;
+
+  /* ===== Layout ===== */
+
+  --container: 1280px;
+
+  /* ===== Bordes ===== */
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* ===== Sombras ===== */
+
+  --shadow-card:
+    0 8px 20px rgba(0,0,0,.04);
+
+  --shadow-hover:
+    0 12px 28px rgba(0,0,0,.08);
+
+}
