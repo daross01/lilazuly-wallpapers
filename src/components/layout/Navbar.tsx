@@ -15,14 +15,15 @@ export default function Navbar() {
           <Logo />
 
           <div className="flex items-center gap-10">
-            {categories.map((category) => (
-              <NavItem
-                key={category.id}
-                to={`/${category.slug}`}
-              >
-                {category.name}
-              </NavItem>
-            ))}
+            {categories.length > 0 &&
+              categories.map((category) => (
+                <NavItem
+                  key={category.id}
+                  to={`/${category.slug}`}
+                >
+                  {category.name}
+                </NavItem>
+              ))}
 
             <NavItem to="/about">
               About
