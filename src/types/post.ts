@@ -1,31 +1,31 @@
 export interface Post {
-  id: string;
 
-  subcategory_id: string;
+    id: string;
 
-  title: string;
-  slug: string;
+    subcategory_id: string;
 
-  subtitle: string | null;
+    title: string;
 
-  excerpt: string | null;
+    slug: string;
 
-  intro: string | null;
+    subtitle: string | null;
 
-  conclusion: string | null;
+    excerpt: string | null;
 
-  featured_image: string | null;
+    intro: string | null;
 
-  published: boolean;
+    conclusion: string | null;
 
-  featured: boolean;
+    featured_image: string | null;
 
-  reading_time: number | null;
+    published: boolean;
 
-  seo_title: string | null;
+    featured: boolean;
 
-  seo_description: string | null;
+    reading_time: number | null;
 
-  created_at: string;
-  updated_at: string;
+    seo_title: string | null;
+
+    seo_description: string | null;
+
 }

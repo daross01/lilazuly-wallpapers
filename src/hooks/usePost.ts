@@ -1,14 +1,27 @@
 import { useEffect, useState } from "react";
-import { getPost } from "@/services/posts";
+
+import { getPosts } from "@/services/posts";
+
 import type { Post } from "@/types/post";
 
-export function usePost(slug: string) {
+export function usePosts() {
 
-  const [post, setPost] = useState<Post | null>(null);
+    const [posts, setPosts] = useState<Post[]>([]);
 
-  useEffect(() => {
-    getPost(slug).then(setPost);
-  }, [slug]);
+    useEffect(() => {
 
-  return post;
+        async function load() {
+
+            const data = await getPosts();
+
+            setPosts(data);
+
+        }
+
+        load();
+
+    }, []);
+
+    return posts;
+
 }
