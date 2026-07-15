@@ -1,6 +1,5 @@
 export interface Subcategory {
   id: string;
-
   category_id: string;
 
   name: string;
@@ -13,8 +12,5 @@ export interface Subcategory {
   position: number;
 
   seo_title: string | null;
-  seo_description: string |null;
-
-  created_at: string;
-  updated_at: string;
+  seo_description: string | null;
 }
