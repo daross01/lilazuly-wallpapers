@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { getPosts } from "@/services/posts";
+
+import {
+  getPosts,
+  getPostBySlug,
+} from "@/services/posts";
+
 import type { Post } from "@/types/post";
 
 export function usePosts() {
@@ -7,8 +12,49 @@ export function usePosts() {
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
-    getPosts().then(setPosts);
+
+    async function load() {
+
+      const data = await getPosts();
+
+      setPosts(data);
+
+    }
+
+    load();
+
   }, []);
 
   return posts;
+
+}
+
+export function usePost(slug: string) {
+
+  const [post, setPost] = useState<Post | null>(null);
+
+  useEffect(() => {
+
+    async function load() {
+
+      try {
+
+        const data = await getPostBySlug(slug);
+
+        setPost(data);
+
+      } catch {
+
+        setPost(null);
+
+      }
+
+    }
+
+    load();
+
+  }, [slug]);
+
+  return post;
+
 }

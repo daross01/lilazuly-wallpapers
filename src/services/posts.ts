@@ -4,14 +4,40 @@ import type { Post } from "@/types/post";
 
 export async function getPosts(): Promise<Post[]> {
 
-    const { data, error } = await supabase
-        .from("posts")
-        .select("*")
-        .eq("published", true)
-        .order("created_at", { ascending: false });
+  const { data, error } = await supabase
 
-    if (error) throw error;
+    .from("posts")
 
-    return data ?? [];
+    .select("*")
+
+    .eq("published", true)
+
+    .order("created_at", { ascending: false });
+
+  if (error) throw error;
+
+  return data ?? [];
+
+}
+
+export async function getPostBySlug(
+  slug: string
+): Promise<Post> {
+
+  const { data, error } = await supabase
+
+    .from("posts")
+
+    .select("*")
+
+    .eq("slug", slug)
+
+    .eq("published", true)
+
+    .single();
+
+  if (error) throw error;
+
+  return data;
 
 }

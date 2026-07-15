@@ -1,31 +1,37 @@
 export interface Post {
 
-    id: string;
+  id: string;
 
-    subcategory_id: string;
+  subcategory_id: string;
 
-    title: string;
+  title: string;
 
-    slug: string;
+  slug: string;
 
-    subtitle: string | null;
+  subtitle: string | null;
 
-    excerpt: string | null;
+  excerpt: string | null;
 
-    intro: string | null;
+  intro: string | null;
 
-    conclusion: string | null;
+  conclusion: string | null;
 
-    featured_image: string | null;
+  featured_image: string | null;
 
-    published: boolean;
+  published: boolean;
 
-    featured: boolean;
+  featured: boolean;
 
-    reading_time: number | null;
+  reading_time: number | null;
 
-    seo_title: string | null;
+  seo_title: string | null;
 
-    seo_description: string | null;
+  seo_description: string | null;
+
+  folder: string | null;
+
+  created_at: string;
+
+  updated_at: string;
 
 }
