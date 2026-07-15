@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { usePost } from "@/hooks/usePost";
 import { usePostBlocks } from "@/hooks/usePostBlocks";
 
+import { getWallpaperUrl } from "@/lib/storage";
+
 export default function Product() {
 
   const { post: slug } = useParams();
@@ -22,71 +24,80 @@ export default function Product() {
     <main className="max-w-5xl mx-auto py-12">
 
       <h1 className="text-4xl font-bold">
-
         {post.title}
-
       </h1>
 
       {post.subtitle && (
-
-        <h2 className="mt-4 text-xl text-gray-500">
-
+        <h2 className="mt-4 text-xl text-[var(--text-light)]">
           {post.subtitle}
-
         </h2>
-
       )}
 
       {post.intro && (
-
-        <p className="mt-8">
-
+        <p className="mt-8 leading-8">
           {post.intro}
-
         </p>
-
       )}
 
       <hr className="my-10" />
 
-      <h3>
-
+      <h3 className="mb-10">
         Images: {blocks.length}
-
       </h3>
 
       {blocks.map((block) => (
 
-        <div
+        <section
           key={block.id}
-          className="my-8"
+          className="mb-16"
         >
 
-          <p>
+          <img
 
-            {block.filename}
+            src={getWallpaperUrl(
+              post.folder!,
+              block.filename
+            )}
 
-          </p>
+            alt={block.alt ?? ""}
 
-          <p>
+            className="
+              w-full
+              rounded-xl
+              shadow-lg
+            "
 
-            {block.caption}
+            loading="lazy"
 
-          </p>
+          />
 
-        </div>
+          {block.caption && (
+
+            <p className="mt-4 text-center text-[var(--text-light)]">
+
+              {block.caption}
+
+            </p>
+
+          )}
+
+        </section>
 
       ))}
 
-      <hr className="my-10" />
-
       {post.conclusion && (
 
-        <p>
+        <section className="mt-16">
 
-          {post.conclusion}
+          <hr className="mb-10" />
 
-        </p>
+          <p className="leading-8">
+
+            {post.conclusion}
+
+          </p>
+
+        </section>
 
       )}
 
