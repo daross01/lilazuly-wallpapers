@@ -1,27 +1,64 @@
 import { useEffect, useState } from "react";
 
-import { getPosts } from "@/services/posts";
+import {
+  getPosts,
+  getPostBySlug,
+} from "@/services/posts";
 
 import type { Post } from "@/types/post";
 
 export function usePosts() {
 
-    const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
 
-    useEffect(() => {
+  useEffect(() => {
 
-        async function load() {
+    async function load() {
 
-            const data = await getPosts();
+      const data = await getPosts();
 
-            setPosts(data);
+      setPosts(data);
 
-        }
+    }
 
-        load();
+    load();
 
-    }, []);
+  }, []);
 
-    return posts;
+  return posts;
+
+}
+
+export function usePost(slug: string) {
+
+  const [post, setPost] = useState<Post | null>(null);
+
+  useEffect(() => {
+
+    if (!slug) return;
+
+    async function load() {
+
+      try {
+
+        const data = await getPostBySlug(slug);
+
+        setPost(data);
+
+      } catch (error) {
+
+        console.error(error);
+
+        setPost(null);
+
+      }
+
+    }
+
+    load();
+
+  }, [slug]);
+
+  return post;
 
 }
